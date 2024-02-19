@@ -26,6 +26,11 @@ const port = process.env.PORT || 3000;
 
 app.use("/recipes", recipeRoutes);
 
+// catch all other routes
+app.use((req, res) => {
+  res.status(404).json({ message: "Not Found" });
+});
+
 app.listen(port, () => {
   console.log(`Server is Running on Port:${port}....`);
 });
